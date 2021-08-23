@@ -1,4 +1,5 @@
 # EulerCharacteristic.jl
+[![CI](https://github.com/shamazmazum/EulerCharacteristic.jl/actions/workflows/test.yml/badge.svg)](https://github.com/shamazmazum/EulerCharacteristic.jl/actions/workflows/test.yml)
 
 `EulerCharacteristic.jl` computes Euler characteristic of objects defined on
 two- or three dimensional regular grid (**FIXME**: elaborate on this).

@@ -61,6 +61,6 @@ let a = ones(Bool, (100, 100));
 end
 
 let a = gentorus(200, 10, 90);
-    b = cat(a[:,:,end-5], a[:,:,begin+5:end]; dims = [3])
-    @test euler_characteristic(a) == -1
+    b = cat(a[:,:,begin:end-5], a[:,:,begin+5:end]; dims = [3])
+    @test euler_characteristic(b) == -1
 end
