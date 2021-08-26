@@ -4,6 +4,18 @@ struct EulerTracker{T, N, A} <: AbstractArray{T, N}
     predicate :: Function
 end
 
+"""
+    EulerTracker(array[, predicate = identity])
+
+Create an instance of `EulerTracker` structure.
+
+`EulerTracker` is a subtype of `Abstractarray` which wraps over
+`array` and allows for fast recalculationg of Euler characteristic
+when `array` is changed.
+
+An optional `predicate` may be specified which is applied to the array
+before calculation of Euler characteristic.
+"""
 function EulerTracker(array     :: AbstractArray{Bool, N},
                       predicate :: Function = identity) where N
     euler = array .|> predicate |> euler_characteristic
@@ -47,4 +59,9 @@ AnnealingAPI.update_corrfns!(tracker :: EulerTracker{T, N},
                                  update_euler!(tracker, val, index)
 
 # Other
+"""
+    euler_characteristic(tracker :: EulerTracker)
+
+Return Euler characteristic of the array tracked by `tracker`.
+"""
 euler_characteristic(tracker :: EulerTracker) = tracker.euler[]

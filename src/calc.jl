@@ -65,6 +65,15 @@ function volumes(array :: AbstractArray{Bool})
     end
 end
 
+"""
+    euler_characteristic(array :: AbstractArray{Bool})
+
+Calculate Euler characteristic for a set of points `S` on a regular
+cubic or square grid. The points are defined by a binary array `array`
+in such a manner that if `array[idx] == true` then `idx ∈ S`.
+"""
+function euler_characteristic end
+
 euler_characteristic(array :: AbstractArray{Bool, 2}) =
     vertices(array) - segments(array) + volumes(array)
 
