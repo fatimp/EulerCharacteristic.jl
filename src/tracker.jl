@@ -1,12 +1,14 @@
 struct EulerTracker{T, N, A} <: AbstractArray{T, N}
-    array :: A
-    euler :: Ref{Int}
+    array     :: A
+    euler     :: Ref{Int}
+    predicate :: Function
 end
 
-function EulerTracker(array :: AbstractArray{Bool, N}) where N
-    euler = euler_characteristic(array)
+function EulerTracker(array     :: AbstractArray{Bool, N},
+                      predicate :: Function = identity) where N
+    euler = array .|> predicate |> euler_characteristic
 
-    return EulerTracker{Bool, N, typeof(array)}(array, Ref(euler))
+    return EulerTracker{Bool, N, typeof(array)}(array, Ref(euler), predicate)
 end
 
 function euler_locally(tracker :: EulerTracker{T, N},
@@ -16,7 +18,7 @@ function euler_locally(tracker :: EulerTracker{T, N},
     uidx       = oneunit(fidx)
 
     slice = tracker[max(fidx, index - uidx):min(lidx, index + uidx)]
-    return euler_characteristic(slice)
+    return slice .|> tracker.predicate |> euler_characteristic
 end
 
 function update_euler!(tracker :: EulerTracker{T, N},
