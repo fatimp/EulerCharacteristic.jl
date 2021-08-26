@@ -1,7 +1,7 @@
 name = "EulerCharacteristic"
 uuid = "2c1df2f5-4ab6-47a9-8339-2c9d55c0a52c"
 authors = ["Vasily Postnicov <shamaz.mazum@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 AnnealingAPI = "ea73c536-af4e-4c29-9508-d79bc79c0161"
