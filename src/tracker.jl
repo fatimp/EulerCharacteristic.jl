@@ -56,7 +56,7 @@ Base.copy(tracker :: EulerTracker) = tracker.array |> copy |> EulerTracker
 AnnealingAPI.update_corrfns!(tracker :: EulerTracker{T, N},
                              val,
                              idx     :: CartesianIndex{N}) where {T, N} =
-                                 update_euler!(tracker, val, index)
+                                 update_euler!(tracker, val, idx)
 
 # Other
 """
