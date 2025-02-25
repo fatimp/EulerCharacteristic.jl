@@ -1,11 +1,7 @@
 module EulerCharacteristic
 
-import AnnealingAPI
-
 include("calc.jl")
-include("tracker.jl")
 
-export euler_characteristic,
-    EulerTracker
+export euler_characteristic
 
 end # module
