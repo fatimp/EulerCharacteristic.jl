@@ -1,14 +1,14 @@
 vertices(array :: AbstractArray{Bool}) = sum(array)
 
-function ortvec(N, i)
+function ortvec(:: Val{N}, i) where N
     vec = zeros(Int, N)
     vec[i] = 1
 
-    return CartesianIndex(vec...)
+    return CartesianIndex(vec...) :: CartesianIndex{N}
 end
 
 function segments(array :: AbstractArray{Bool, N}) where N
-    δ = [ortvec(N, i) for i in 1:N]
+    δ = [ortvec(Val(N), i) for i in 1:N]
 
     indices    = CartesianIndices(array)
     fidx, lidx = first(indices), last(indices)
