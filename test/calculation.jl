@@ -55,6 +55,12 @@ end
 @test euler_characteristic(hcat(ones(Bool, (100, 100, 100)),
                                 zeros(Bool, (100, 100, 100)),
                                 ones(Bool, (100, 100, 100)))) == 2
+@test euler_characteristic(hcat(ones(Bool, (100, 100)),
+                                zeros(Bool, (100, 100)),
+                                ones(Bool, (100, 100)),
+                                zeros(Bool, (100, 100)),
+                                ones(Bool, (100, 100)))) == 3
+
 let a = ones(Bool, (100, 100));
     a[50:60, 50:60] .= 0;
     @test euler_characteristic(a) == 0
